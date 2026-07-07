@@ -14,7 +14,11 @@
         #dropdown { display: none; position: absolute; top: 60px; right: 20px; background: white; color: #333; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 150px; }
         #dropdown a { display: block; padding: 12px; text-decoration: none; color: #333; border-bottom: 1px solid #eee; cursor: pointer; }
         
+        /* Hero com novo texto */
         .hero { background: #fdfaf5; padding: 40px 20px; text-align: center; border-bottom: 1px solid #ddd; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; color: #555; max-width: 500px; margin: 0 auto; }
+        
         .container { max-width: 600px; margin: 20px auto; padding: 0 20px; }
         
         /* Blog */
@@ -28,7 +32,13 @@
         .card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .card img { width: 100%; height: 180px; object-fit: cover; }
         .content-area { padding: 20px; }
+        details summary { cursor: pointer; font-weight: bold; list-style: none; padding: 10px 0; }
+        .lista-itens { padding: 10px 0; border-top: 1px solid #eee; margin-top: 10px; }
+        .lista-itens div { padding: 5px 0; font-size: 0.9em; color: #666; }
         .btn-action { background: var(--danger); color: white; border: none; padding: 14px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; text-transform: uppercase; }
+        
+        /* Mentoria */
+        #mentoria-section { display: none; margin-bottom: 30px; background: #fff3cd; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #ffeeba; }
     </style>
 </head>
 <body>
@@ -38,17 +48,24 @@
         <span class="menu-btn" onclick="toggleMenu()">☰</span>
         <div id="dropdown">
             <a onclick="showBlog()">Blog</a>
+            <a onclick="showMentoria()">Mentoria</a>
             <a href="#">Podcast</a>
-            <a href="#">Newsletter</a>
-            <a href="#">Consultoria</a>
         </div>
     </nav>
 
     <header class="hero">
         <h1>Menos teoria, mais resultados.</h1>
+        <p>Guias de campo para montar um negócio real, escritos por quem já sujou as mãos.</p>
     </header>
 
     <main class="container">
+        <!-- Secção Mentoria -->
+        <article id="mentoria-section">
+            <h2>Mentoria</h2>
+            <p>Transforma o teu negócio com acompanhamento personalizado.</p>
+            <button onclick="hideMentoria()">Fechar</button>
+        </article>
+
         <!-- Secção Blog -->
         <article id="blog-section">
             <h2 style="text-align: center;">Blog</h2>
@@ -59,44 +76,54 @@
                 <div class="blog-item">🎯<br>Experiências</div>
             </div>
 
-            <!-- Submenu Insufláveis -->
             <div id="submenu-insuflaveis" class="submenu">
-                <button onclick="mostrarArtigo('artigo-insuflaveis-1')" style="width:100%; margin-bottom:5px;">Por detrás da diversão</button>
-                <button onclick="mostrarArtigo('artigo-insuflaveis-2')" style="width:100%;">O Início Acidental</button>
+                <button onclick="mostrarArtigo('artigo-insuflaveis-1')" style="width:100%;">Por detrás da diversão</button>
+                <button onclick="mostrarArtigo('artigo-insuflaveis-2')" style="width:100%; margin-top:5px;">O Início Acidental</button>
             </div>
             
-            <!-- Artigos -->
             <div id="artigo-opalas" class="artigo">
                 <h3>Da Mina Australiana à minha Bancada de Trabalho</h3>
-                <p>Muitos perguntam-me como é que um projeto de arte nasce de uma pedra bruta. A minha jornada com as opalas australianas começou na procura pela fonte mais pura. Não queria intermediários; queria a conexão direta com o solo australiano.</p>
-                <p>Encontrar os fornecedores certos foi um processo de paciência e filtragem, quase tão minucioso como o próprio corte da pedra. Depois de meses a validar contatos, a primeira encomenda chegou.</p>
-                <button onclick="fecharArtigos()">Fechar Artigo</button>
+                <p>Esta é a história de como transformo pedras brutas em arte. A minha jornada começa na procura direta por vendedores locais na Austrália, eliminando intermediários para garantir a qualidade da matéria-prima. O processo termina na minha própria bancada, onde a lapidação transforma o que antes era pedra bruta no brilho final de cada peça.</p>
+                <button onclick="fecharArtigos()">Fechar</button>
             </div>
 
             <div id="artigo-insuflaveis-1" class="artigo">
-                <h3>Por detrás da diversão: O que ninguém te diz</h3>
-                <p>Gerir este negócio não é apenas sobre alugar equipamentos; é uma operação de precisão. Um bom insuflável exige uma manutenção rigorosa que o público nunca vê, mas que garante a segurança.</p>
-                <button onclick="fecharArtigos()">Fechar Artigo</button>
+                <h3>Por detrás da diversão</h3>
+                <p>Gerir este negócio exige uma operação de precisão e segurança.</p>
+                <button onclick="fecharArtigos()">Fechar</button>
             </div>
 
             <div id="artigo-insuflaveis-2" class="artigo">
-                <h3>O Início Acidental: De uma festa de sobrinhos a um negócio</h3>
-                <p>Tudo começou de forma simples: queria garantir que os meus sobrinhos tivessem algo especial nas suas festas. Ao ver o entusiasmo deles, percebi que havia uma carência de serviço de qualidade no mercado.</p>
-                <p>A transição para a Lipe Insufláveis foi um processo de aprendizagem onde transformei uma diversão de família num negócio profissional.</p>
-                <button onclick="fecharArtigos()">Fechar Artigo</button>
+                <h3>O Início Acidental</h3>
+                <p>Tudo começou por causa dos meus sobrinhos, uma festa que virou negócio.</p>
+                <button onclick="fecharArtigos()">Fechar</button>
             </div>
             
             <button onclick="hideBlog()" style="width:100%; margin-top:20px;">Fechar Menu Blog</button>
         </article>
 
-        <!-- Cards de Projetos -->
+        <!-- Cards -->
         <article class="card">
             <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800" alt="Pastelaria">
-            <div class="content-area"><h3>Pastelaria e Padaria</h3><button class="btn-action">Ver Detalhes</button></div>
+            <div class="content-area">
+                <details>
+                    <summary>Pastelaria e Padaria ▼</summary>
+                    <div class="lista-itens">
+                        <div>1. Gestão de encomendas</div><div>2. Seleção de ingredientes</div><div>3. Otimização de fornadas</div><div>4. Marketing de vizinhança</div><div>5. Controlo de perdas</div><div>6. Pricing de margem</div><div>7. Fidelização</div><div>8. Higiene rigorosa</div><div>9. Inovação sazonal</div><div>10. Escalonamento</div>
+                    </div>
+                </details>
+            </div>
         </article>
         <article class="card">
             <img src="https://images.unsplash.com/photo-1589365236715-e6592231e330?auto=format&fit=crop&w=800" alt="Insufláveis">
-            <div class="content-area"><h3>Negócio de Insufláveis</h3><button class="btn-action">Ver Detalhes</button></div>
+            <div class="content-area">
+                <details>
+                    <summary>Negócio de Insufláveis ▼</summary>
+                    <div class="lista-itens">
+                        <div>1. Normas de segurança</div><div>2. Manutenção técnica</div><div>3. Logística de carga</div><div>4. Escolha do equipamento</div><div>5. Seguros obrigatórios</div><div>6. Gestão de agenda</div><div>7. Limpeza e restauro</div><div>8. Campanhas digitais</div><div>9. Parcerias locais</div><div>10. Análise de lucro</div>
+                    </div>
+                </details>
+            </div>
         </article>
         <article class="card">
             <img src="https://images.unsplash.com/photo-1627914609650-891045a9992f?auto=format&fit=crop&w=800" alt="Opalas">
@@ -112,11 +139,15 @@
         function toggleMenu() { document.getElementById('dropdown').style.display = (document.getElementById('dropdown').style.display === 'block') ? 'none' : 'block'; }
         function showBlog() { document.getElementById('blog-section').style.display = 'block'; toggleMenu(); }
         function hideBlog() { document.getElementById('blog-section').style.display = 'none'; fecharArtigos(); document.getElementById('submenu-insuflaveis').style.display = 'none'; }
+        
+        function showMentoria() { document.getElementById('mentoria-section').style.display = 'block'; toggleMenu(); }
+        function hideMentoria() { document.getElementById('mentoria-section').style.display = 'none'; }
+        
         function toggleSubmenu(id) { document.getElementById(id).style.display = (document.getElementById(id).style.display === 'block') ? 'none' : 'block'; }
         function mostrarArtigo(id) { fecharArtigos(); document.getElementById(id).style.display = 'block'; }
         function fecharArtigos() { 
-            const artigos = document.querySelectorAll('.artigo');
-            artigos.forEach(a => a.style.display = 'none');
+            const arts = document.querySelectorAll('.artigo');
+            arts.forEach(a => a.style.display = 'none');
         }
     </script>
 </body>
