@@ -3,83 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Paradinha | Projetos</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background: #f4f4f4; }
-        .navbar { background-color: #007bff; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .hero { background: #FFD700; padding: 40px 20px; text-align: center; }
-        .container { padding: 20px; }
-        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        :root { --primary: #007bff; --accent: #FFD700; --danger: #d9534f; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
         
-        /* Estilo da Imagem */
-        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
+        .navbar { background: #333; color: white; padding: 1rem 20px; display: flex; justify-content: space-between; align-items: center; }
+        .hero { background: var(--accent); padding: 50px 20px; text-align: center; }
+        .container { max-width: 600px; margin: 20px auto; padding: 0 20px; }
         
-        details { cursor: pointer; }
-        summary { font-size: 1.2em; font-weight: bold; list-style: none; padding: 10px 0; }
-        summary::after { content: ' ▼'; float: right; color: #007bff; }
+        .card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .content-area { padding: 20px; }
         
-        .chapter { background: #f9f9f9; padding: 12px; margin: 8px 0; border-left: 5px solid #007bff; border-radius: 3px; }
-        .locked-section { background: #fff0f0; padding: 15px; border-radius: 5px; border: 2px solid #d9534f; text-align: center; margin-top: 15px; }
-        .btn-buy { background: #d9534f; color: white; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        details summary { font-size: 1.3em; font-weight: bold; padding: 10px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .chapter { padding: 10px; border-bottom: 1px solid #eee; color: #555; }
+        
+        .btn-buy { background: var(--danger); color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; text-align: center; width: 80%; max-width: 300px; }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <strong>JOSE PARADINHA</strong>
-        <div>🛒 👤 🔍 ☰</div>
+    <nav class="navbar"><strong>JOSE PARADINHA</strong> <span>☰</span></nav>
+
+    <header class="hero"><h1>Menos teoria, resultados reais.</h1></header>
+
+    <main class="container">
+        <div id="projetos">
+            
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800" alt="Pastelaria">
+                <div class="content-area">
+                    <details>
+                        <summary>Pastelaria Badaró <span>▼</span></summary>
+                        <div class="chapter">✓ Capítulo 1: Fundamentos</div>
+                        <div class="chapter">✓ Capítulo 2: Gestão</div>
+                        <button class="btn-buy" onclick="abrirModal()">DESBLOQUEAR TUDO</button>
+                    </details>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1589365236715-e6592231e330?auto=format&fit=crop&w=800" alt="Insufláveis">
+                <div class="content-area">
+                    <details>
+                        <summary>Negócio de Insufláveis <span>▼</span></summary>
+                        <div class="chapter">✓ Capítulo 1: Logística</div>
+                        <div class="chapter">✓ Capítulo 2: Segurança</div>
+                        <button class="btn-buy" onclick="abrirModal()">DESBLOQUEAR TUDO</button>
+                    </details>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1627914609650-891045a9992f?auto=format&fit=crop&w=800" alt="Opalas">
+                <div class="content-area">
+                    <details>
+                        <summary>Lapidação de Opalas <span>▼</span></summary>
+                        <div class="chapter">✓ Capítulo 1: Técnicas</div>
+                        <div class="chapter">✓ Capítulo 2: Equipamento</div>
+                        <button class="btn-buy" onclick="abrirModal()">DESBLOQUEAR TUDO</button>
+                    </details>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" alt="Experiências">
+                <div class="content-area">
+                    <details>
+                        <summary>Experiências Únicas <span>▼</span></summary>
+                        <div class="chapter">✓ Capítulo 1: Planeamento</div>
+                        <div class="chapter">✓ Capítulo 2: Execução</div>
+                        <button class="btn-buy" onclick="abrirModal()">DESBLOQUEAR TUDO</button>
+                    </details>
+                </div>
+            </article>
+            
+        </div>
+    </main>
+
+    <div id="modal" onclick="fecharModal()">
+        <div class="modal-content">
+            <h3>Acesso Restrito</h3>
+            <p>Esta funcionalidade será ativada em breve!</p>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
     </div>
 
-    <div class="hero">
-        <h1>Menos teoria, mais resultados.</h1>
-    </div>
-
-    <div class="container">
-        
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500" alt="Pastelaria">
-            <details>
-                <summary>Pastelaria Badaró</summary>
-                <div class="chapter"><strong>Capítulo 1:</strong> Como começar</div>
-                <div class="chapter"><strong>Capítulo 2:</strong> Os erros a evitar</div>
-                <div class="chapter"><strong>Capítulo 3:</strong> Perguntas e respostas</div>
-                <div class="locked-section"><button class="btn-buy">DESBLOQUEAR TUDO</button></div>
-            </details>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1589365236715-e6592231e330?auto=format&fit=crop&w=500" alt="Insufláveis">
-            <details>
-                <summary>Negócio de Insufláveis</summary>
-                <div class="chapter"><strong>Capítulo 1:</strong> Como começar</div>
-                <div class="chapter"><strong>Capítulo 2:</strong> Os erros a evitar</div>
-                <div class="chapter"><strong>Capítulo 3:</strong> Perguntas e respostas</div>
-                <div class="locked-section"><button class="btn-buy">DESBLOQUEAR TUDO</button></div>
-            </details>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1627914609650-891045a9992f?auto=format&fit=crop&w=500" alt="Opalas">
-            <details>
-                <summary>Lapidação de Opalas</summary>
-                <div class="chapter"><strong>Capítulo 1:</strong> Como começar</div>
-                <div class="chapter"><strong>Capítulo 2:</strong> Os erros a evitar</div>
-                <div class="chapter"><strong>Capítulo 3:</strong> Perguntas e respostas</div>
-                <div class="locked-section"><button class="btn-buy">DESBLOQUEAR TUDO</button></div>
-            </details>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500" alt="Experiências">
-            <details>
-                <summary>Experiências Únicas</summary>
-                <div class="chapter"><strong>Capítulo 1:</strong> Como começar</div>
-                <div class="chapter"><strong>Capítulo 2:</strong> Os erros a evitar</div>
-                <div class="chapter"><strong>Capítulo 3:</strong> Perguntas e respostas</div>
-                <div class="locked-section"><button class="btn-buy">DESBLOQUEAR TUDO</button></div>
-            </details>
-        </div>
-
-    </div>
-
+    <script>
+        function abrirModal() { document.getElementById('modal').style.display = 'flex'; }
+        function fecharModal() { document.getElementById('modal').style.display = 'none'; }
+    </script>
 </body>
 </html>
